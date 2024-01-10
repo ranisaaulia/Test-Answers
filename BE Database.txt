@@ -1,0 +1,69 @@
+-- 1. Tampilkan seluruh data dari tabel "employees" 
+SELECT * FROM employees;
+
+-- 2. Berapa banyak karyawan yang memiliki posisi pekerjaan (job title) "Manager"?
+SELECT COUNT(*) as total_managers FROM employees WHERE job_title = 'Manager';
+
+-- 3. Tampilkan daftar nama dan gaji (salary) dari karyawan yang bekerja di departemen "Sales" atau "Marketing" 
+SELECT name, salary
+FROM employees
+WHERE department IN ('Sales', 'Marketing');
+
+-- 4. Hitung rata-rata gaji (salary) dari karyawan yang bergabung (joined) dalam 5 tahun terakhir (berdasarkan kolom "joined_date")  
+SELECT AVG(salary) AS average_salary_last_5_years
+FROM employees
+WHERE joined_date >= DATE_SUB(CURDATE(), INTERVAL 5 YEAR);
+
+-- 5. Tampilkan 5 karyawan dengan total penjualan (sales) tertinggi dari tabel "employees" dan "sales_data"
+SELECT e.employee_id, e.name, SUM(sd.sales) AS total_sales
+FROM employees e
+JOIN sales_data sd ON e.employee_id = sd.employee_id
+GROUP BY e.employee_id, e.name
+ORDER BY total_sales DESC
+LIMIT 5;
+
+-- 6. Tampilkan nama, gaji (salary), dan rata-rata gaji (salary) dari semua karyawan yang bekerja di departemen yang memiliki rata-rata gaji lebih tinggi dari gaji rata-rata di semua departemen
+SELECT e.name, e.salary, dept_avg.avg_salary AS department_average_salary
+FROM employees e
+JOIN (
+    SELECT department, AVG(salary) AS avg_salary
+    FROM employees
+    GROUP BY department
+    HAVING AVG(salary) > (
+        SELECT AVG(salary)
+        FROM employees
+    )
+) dept_avg ON e.department = dept_avg.department
+ORDER BY e.salary DESC;
+
+-- 7. Tampilkan nama dan total penjualan (sales) dari setiap karyawan, bersama dengan peringkat (ranking) masing-masing karyawan berdasarkan total penjualan. Peringkat 1 adalah karyawan dengan total penjualan tertinggi
+SELECT 
+    name,
+    total_sales,
+    DENSE_RANK() OVER (ORDER BY total_sales DESC) AS sales_rank
+FROM (
+    SELECT 
+        e.name,
+        SUM(sd.sales) AS total_sales
+    FROM employees e
+    JOIN sales_data sd ON e.employee_id = sd.employee_id
+    GROUP BY e.name
+) ranked_sales;
+
+-- 8. Buat sebuah stored procedure yang menerima nama departemen sebagai input, dan mengembalikan daftar karyawan dalam departemen tersebut bersama dengan total gaji (salary) yang mereka terima
+DELIMITER //
+
+CREATE PROCEDURE GetDepartmentEmployees(IN department_name VARCHAR(100))
+BEGIN
+    SELECT 
+        e.name,
+        e.salary
+    FROM employees e
+    WHERE e.department = department_name;
+END //
+
+DELIMITER ;
+
+
+
+
