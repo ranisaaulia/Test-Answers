@@ -1,6 +1,6 @@
 This repository contains answers for the Engineer Assessment, segmented into several parts as follows:
 
-## 1. Problem Solving Basic
+## 1. Problem Solving 
 - Directory: `/ProblemSolving`
 - Description: Contains answers for the Problem Solving Basic test.
 
