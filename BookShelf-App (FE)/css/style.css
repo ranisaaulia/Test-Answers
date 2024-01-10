@@ -192,24 +192,24 @@ input[type=text], input[type=date], .btn-submit:focus {
   .form {
     display: flex;
     flex-direction: column;
-    align-items: left; /* Menengahkan item dalam flexbox */
-    height: auto; /* Mengubah ketinggian sesuai konten */
-    margin-top: 20px; /* Jarak dari elemen di atasnya */
+    align-items: left; 
+    height: auto; 
+    margin-top: 20px; 
 }
 
 .form input[type="submit"] {
-    margin-top: 10px; /* Menambahkan jarak antara input dan tombol submit */
+    margin-top: 10px; 
 }
 
 
 .finished-status {
-    color: green; /* Warna untuk buku yang telah selesai dibaca */
-    font-style: italic; /* Gaya huruf italic */
+    color: green; 
+    font-style: italic; 
 }
 
 .unfinished-status {
-    color: red; /* Warna untuk buku yang belum selesai dibaca */
-    font-weight: bold; /* Gaya huruf bold */
+    color: red; 
+    font-weight: bold; 
 }
 
 .form-group {
@@ -236,28 +236,27 @@ input[type="text"] {
 }
 
 .checkbox-wrapper input[type="checkbox"] {
-    margin-right: 8px; /* Menambahkan jarak antara checkbox dan teks */
+    margin-right: 8px;
 }
 
 .container {
     width: 100%;
-    max-width: 800px; /* Mengatur lebar maksimum container */
-    margin: 20px auto; /* Memberi jarak di atas dan bawah, serta mengatur posisi menjadi tengah */
+    max-width: 800px; 
+    margin: 20px auto; 
     padding: 20px;
     border-radius: 10px;
     background: #141414;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Menyesuaikan judul header container */
+
 .container-header {
-    margin-bottom: 20px; /* Memberi jarak antara judul dengan konten */
+    margin-bottom: 20px; 
     font-size: 24px;
     font-weight: bold;
     color: #333;
 }
 
-/* Menyesuaikan ukuran dan jarak pada input, label, dan tombol */
 .form-group {
     margin-bottom: 15px;
 }
@@ -270,7 +269,7 @@ label {
 
 input[type="text"],
 input[type="number"] {
-    width: calc(100% - 10px); /* Menyesuaikan lebar input */
+    width: calc(100% - 10px);
     padding: 10px;
     border: 1px solid #110000;
     border-radius: 5px;
@@ -289,7 +288,6 @@ input[type="number"] {
     margin-right: 8px;
 }
 
-/* Menyesuaikan tombol cari */
 .search-button {
     padding: 10px 20px;
     background-color: #4CAF50;
@@ -306,12 +304,11 @@ input[type="number"] {
 }
 
 .form-group label {
-    color: #e6e2e2; /* Ubah warna teks label */
+    color: #e6e2e2; 
 }
 
 input[type="text"],
 input[type="number"] {
-    /* Pastikan warna teks input cukup kontras */
     color: #161515;
 }
 
