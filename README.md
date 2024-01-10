@@ -12,7 +12,7 @@ This repository contains answers for the Engineer Assessment, segmented into sev
 - File: `/BE-Database.txt`
 - Description: Txt file containing the database implementation for the backend.
 
-## 4. BookShelf App (BE)
+## 4. BookShelf App (FE)
 - Directory: `/BookShelf-App-FE`
 - Description: Frontend application for the Implementation Test.
 
